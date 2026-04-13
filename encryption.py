@@ -11,7 +11,7 @@ def encrypt(plain_text, key):
             print(
                 f"""
 WARNING: UPDATE KEY
-The character {char} was not found in the key. '{char}' will not be encrypted, since its not in the key,
+The character '{char}' was not found in the key. '{char}' will not be encrypted, since its not in the key,
 but the rest will be encrypted and the entry will be saved. 
                 """
                 )
@@ -30,7 +30,7 @@ def decrypt(encrypted_text, key):
             print(
                 f"""
 WARNING: UPDATE KEY
-The characteR {char} was not fount in the key. '{char}' will not be decrypted. Since it was not in the key,
+The character '{char}' was not fount in the key. '{char}' will not be decrypted. Since it was not in the key,
 it is the original character. 
                 """
                 )
