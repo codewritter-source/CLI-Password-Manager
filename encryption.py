@@ -9,7 +9,7 @@ def encrypt(plain_text, key):
             encrypted_text += key[char]
         else:
             print(
-                f"""
+                f""" 
 WARNING: UPDATE KEY
 The character '{char}' was not found in the key. '{char}' will not be encrypted, since its not in the key,
 but the rest will be encrypted and the entry will be saved. 

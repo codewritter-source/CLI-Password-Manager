@@ -4,6 +4,7 @@
 from storage import get_entry, add_entry, add_generated_entry, delete_entry
 from generator import generate
 
+
 import sys
 
 
