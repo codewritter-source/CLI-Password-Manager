@@ -3,7 +3,7 @@
 
 # Random password generation function. It returns a randomly selected string
 # with 15 to 26 characters (user option) of numbers, letters and symbols.
-#   add_generated_entry() function in 'storage.py'
+# add_generated_entry() function in 'storage.py'
 
 
 import string, random

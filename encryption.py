@@ -4,7 +4,7 @@
 # Encryption and decryption functions for a Symmetric Cipher. It can also be easily modified
 # to use a Custom Key.
 
-# WARNING: The key is a Simmetric Cipher. It is meant FOR EDUCATIONAL PURPOSES ONLY.
+# WARNING: The key is a Symmetric Cipher. It is meant FOR EDUCATIONAL PURPOSES ONLY.
 #          This type of encryption is WEAK and it is not meant to store any sensitive
 #          information, or any real information.
 
