@@ -50,7 +50,7 @@ ADD AN ENTRY:
         delete_entry()
     elif option == 4:
         if os.path.exists("master.csv"):
-            print("Master password already exists.")
+            print("Sorry,master password already exists.")
         else:
             print(
                 """
