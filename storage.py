@@ -11,14 +11,14 @@ import csv
 def add_entry ():
     while True:
 #       Receive entry
-        tag = input("Enter a title for this entry: ")
+        account = input("Enter service provider: ")
         username = input("Enter your username: ")
         password = input("Enter your password: ")
 #       Encrypt data
         encrypted_username = encrypt(username, key)
         encrypted_password = encrypt(password, key)
 
-        save(tag, encrypted_username, encrypted_password)
+        save(account, encrypted_username, encrypted_password)
 
         decision = input("Do you wish to add another entry? (y/n): ")
         if decision.strip().lower() == "y":
@@ -27,7 +27,7 @@ def add_entry ():
             main()
 
 def add_generated_entry (password):
-    tag = input("Enter a title for this entry: ")
+    account = input("Enter service provider: ")
     username = input("Enter your username: ")
     password = password.strip()
 
@@ -36,7 +36,7 @@ def add_generated_entry (password):
     encrypted_password = encrypt(password, key)
 
 #   Save entry
-    save(tag, encrypted_username, encrypted_password)
+    save(account, encrypted_username, encrypted_password)
 
     print("Password has been created. The entry has been saved successfully.")
     main()
@@ -49,15 +49,15 @@ def get_entry ():
 
 #   Search database for entry
     for line in lines:
-        tag, encrypted_username, encrypted_password = line.split(",")
+        account, encrypted_username, encrypted_password = line.split(",")
         username = decrypt(encrypted_username.strip(), key)
         password = decrypt(encrypted_password.strip(), key)
-        tag = tag.strip()
+        account = account.strip()
 
-        if search == tag:
+        if search == account:
             print(
                 f"""
-Found an entry for: {tag}
+Found an entry for: {account}
     Username: {username}
     Password: {password}
                 """
@@ -69,10 +69,10 @@ Found an entry for: {tag}
         print('No entry found with this tag. \n')
         main()
 
-def save (tag, encrypted_username, encrypted_password):
+def save (account, encrypted_username, encrypted_password):
     with open('password.csv','a', encoding = 'utf-8') as file:
 #       Save data
-        file.write(f"{tag},{encrypted_username},{encrypted_password} \n")
+        file.write(f"{account},{encrypted_username},{encrypted_password} \n")
 
 
 def delete_entry ():
@@ -82,7 +82,7 @@ WARNING: Removing an entry will permanently delete it from the database. This ac
         """
     )
 
-    tag_to_delete = input("Enter the title of the entry you want to delete: ")
+    account_to_delete = input("Enter the title of the entry you want to delete: ")
 
 #   Confirmation Phrase
     message = 'I want to delete'
@@ -98,7 +98,7 @@ WARNING: Removing an entry will permanently delete it from the database. This ac
 #   Keep only the rows that don't match the tag.
     keep = []
     for row in rows:
-        if row[0] != tag_to_delete:
+        if row[0] != account_to_delete:
             keep.append(row)
 
 #   Write the filtered rows back to the file.
@@ -106,4 +106,4 @@ WARNING: Removing an entry will permanently delete it from the database. This ac
         writer = csv.writer(file)
         writer.writerows(keep)
 
-    print(f" Entry of tag '{tag_to_delete}' has been successfully removed.")
+    print(f" Entry of tag '{account_to_delete}' has been successfully removed.")
