@@ -1,21 +1,12 @@
 
 
 
-# Encryption and decryption functions for a Symmetric Cipher. It can also be easily modified
-# to use a Custom Key.
-
-# WARNING: The key is a Symmetric Cipher. It is meant FOR EDUCATIONAL PURPOSES ONLY.
-#          This type of encryption is WEAK and it is not meant to store any sensitive
-#          information, or any real information.
-
-
 def encrypt(plain_text, key):
     encrypted_text = ""
-    for char in plain_text:
-#       Use key to encrypt text
+    for char in plain_text:                 # Use key to encrypt text.
         if char in key:
             encrypted_text += key[char]
-        else:
+        else:                               # If character is not in key, add the same character.
             print(
                 f""" 
 WARNING: UPDATE KEY
@@ -27,8 +18,7 @@ but the rest will be encrypted and the entry will be saved.
     return encrypted_text
 
 def decrypt(encrypted_text, key):
-#   Key reversed for decryption
-    reverse_key = {value:key for key,value in key.items()}
+    reverse_key = {value:key for key,value in key.items()}      # Reverse the key for decryption
 
     decrypted_text = ""
     for char in encrypted_text:

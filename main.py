@@ -1,9 +1,6 @@
 
 
 
-# Program workflow functions
-## Update to a dictionary as a menu dispatcher.
-
 from storage import get_entry, add_entry, add_generated_entry, delete_entry
 from generator import generate
 import sys
@@ -15,7 +12,7 @@ def close_program( ):
         sys.exit()
 
 def main ():
-#   Menu is getting out of hand. Options: dictionary menu.
+    #   Menu is getting out of hand. Options: dictionary menu.
     print(
         """"
 Main Menu: \n
@@ -34,7 +31,7 @@ ADD AN ENTRY:
     1. Generate a password for the entry
     2. Assign a password for the entry
     3. Return
-            
+
             """
         )
 
