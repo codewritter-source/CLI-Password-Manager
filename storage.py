@@ -3,28 +3,23 @@
 
 from encryption import encrypt, decrypt
 from key import key
-from main import main
+from main import menu
 
 import csv
 
 
 def add_entry ():
-    while True:
-#       Receive entry
-        account = input("Enter service provider: ")
-        username = input("Enter your username: ")
-        password = input("Enter your password: ")
-#       Encrypt data
-        encrypted_username = encrypt(username, key)
-        encrypted_password = encrypt(password, key)
+#   Receive entry
+    account = input("Enter service provider: ")
+    username = input("Enter your username: ")
+    password = input("Enter your password: ")
+#   Encrypt data
+    encrypted_username = encrypt(username, key)
+    encrypted_password = encrypt(password, key)
 
-        save(account, encrypted_username, encrypted_password)
-
-        decision = input("Do you wish to add another entry? (y/n): ")
-        if decision.strip().lower() == "y":
-            continue
-        elif decision.strip().lower() == "n":
-            main()
+    save(account, encrypted_username, encrypted_password)
+    print("The entry has been saved successfully.")
+    menu()
 
 def add_generated_entry (password):
     account = input("Enter service provider: ")
@@ -39,7 +34,7 @@ def add_generated_entry (password):
     save(account, encrypted_username, encrypted_password)
 
     print("Password has been created. The entry has been saved successfully.")
-    main()
+    menu()
 
 def get_entry ():
     search = input("Enter a tag to search database: ")
@@ -67,7 +62,7 @@ Found an entry for: {account}
 
     if not found:
         print('No entry found with this tag. \n')
-        main()
+        menu()
 
 def save (account, encrypted_username, encrypted_password):
     with open('password.csv','a', encoding = 'utf-8') as file:
@@ -90,7 +85,7 @@ WARNING: Removing an entry will permanently delete it from the database. This ac
     text = input("Write the message here: ")
     if text != message:
         print("The message you entered is not correct.")
-        main()
+        menu()
 
     with open('password.csv', 'r', newline = "") as file:
         rows = list(csv.reader(file))
