@@ -107,3 +107,6 @@ WARNING: Removing an entry will permanently delete it from the database. This ac
         writer.writerows(keep)
 
     print(f" Entry of tag '{account_to_delete}' has been successfully removed.")
+
+
+
