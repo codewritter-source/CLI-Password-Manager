@@ -3,38 +3,39 @@
 
 from encryption import encrypt, decrypt
 from key import key
-from main import menu
+from main import main_menu
 
 import csv
 
 
 def add_entry ():
-#   Receive entry
+    # Receive entry
     account = input("Enter service provider: ")
     username = input("Enter your username: ")
     password = input("Enter your password: ")
-#   Encrypt data
+
+    # Encrypt data
     encrypted_username = encrypt(username, key)
     encrypted_password = encrypt(password, key)
 
     save(account, encrypted_username, encrypted_password)
     print("The entry has been saved successfully.")
-    menu()
+    main_menu()
 
 def add_generated_entry (password):
     account = input("Enter service provider: ")
     username = input("Enter your username: ")
     password = password.strip()
 
-#   Encrypt entry
+    # Encrypt entry
     encrypted_username = encrypt(username, key)
     encrypted_password = encrypt(password, key)
 
-#   Save entry
+    # Save entry
     save(account, encrypted_username, encrypted_password)
 
     print("Password has been created. The entry has been saved successfully.")
-    menu()
+    main_menu()
 
 def get_entry ():
     search = input("Enter a tag to search database: ")
@@ -42,7 +43,7 @@ def get_entry ():
         lines = file.read().splitlines()
     found = False
 
-#   Search database for entry
+    # Search database for entry
     for line in lines:
         account, encrypted_username, encrypted_password = line.split(",")
         username = decrypt(encrypted_username.strip(), key)
@@ -62,11 +63,11 @@ Found an entry for: {account}
 
     if not found:
         print('No entry found with this tag. \n')
-        menu()
+        main_menu()
 
 def save (account, encrypted_username, encrypted_password):
+    # Saved data.
     with open('password.csv','a', encoding = 'utf-8') as file:
-#       Save data
         file.write(f"{account},{encrypted_username},{encrypted_password} \n")
 
 
@@ -79,24 +80,24 @@ WARNING: Removing an entry will permanently delete it from the database. This ac
 
     account_to_delete = input("Enter the title of the entry you want to delete: ")
 
-#   Confirmation Phrase
+    # Confirmation Phrase
     message = 'I want to delete'
     print(f"Write '{message}' in the line below to continue.")
     text = input("Write the message here: ")
     if text != message:
         print("The message you entered is not correct.")
-        menu()
+        main_menu()
 
     with open('password.csv', 'r', newline = "") as file:
         rows = list(csv.reader(file))
 
-#   Keep only the rows that don't match the tag.
+    # Keep only the rows that don't match the tag.
     keep = []
     for row in rows:
         if row[0] != account_to_delete:
             keep.append(row)
 
-#   Write the filtered rows back to the file.
+    # Write the filtered rows back to the file.
     with open('password.csv', 'w', newline = "") as file:
         writer = csv.writer(file)
         writer.writerows(keep)
