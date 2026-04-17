@@ -10,19 +10,23 @@ Modern password managers use slow, memory‑hard algorithms like Argon2, bcrypt,
 
 🚀 Features
 
-🔐 Master Password System -
+🔐 Master Password System
+
 Create your own master password or generate a random one.
 Salted SHA‑256 hashing for basic verification.
 Stored in master.txt as <salt_hex>:<hash_hex>.
 
-🗄️ Password Vault -
+🗄️ Password Vault 
+
 Store credentials in a local CSV file (master.csv).
 Add, view, and manage entries through a CLI menu.
 
-🎲 Random Password Generator -
+🎲 Random Password Generator 
+
 Uses a custom generator module to create strong random passwords.
 
-🧩 Modular Code Structure -
+🧩 Modular Code Structure 
+
 Separate modules for generation, verification, encryption, storage and menu logic,
 so that alternative updates can be integrated (AES, Argon2, cloud storage)
 Avoids circular imports and keeps logic clean.
