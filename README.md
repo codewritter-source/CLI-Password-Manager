@@ -7,7 +7,7 @@ This project demonstrates how to generate, store, and verify a master password u
 This project uses SHA‑256 + salt for password hashing.
 While this is acceptable for educational purposes, it is not secure enough for real‑world password storage.
 Modern password managers use slow, memory‑hard algorithms like Argon2, bcrypt, or PBKDF2 to resist brute‑force attacks.
-
+/
 🚀 Features
 
 🔐 Master Password System -
