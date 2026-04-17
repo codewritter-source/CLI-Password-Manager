@@ -48,13 +48,15 @@ CLI-PasswordManager/
 ─ README.md             - Project documentation
 
 🛠️ Installation
+
 git clone https://github.com/codewritter-source/CLI-PasswordManager
-CLI-Password-Manager
 
 📜 License
+
 This project is released under the MIT License.
 Feel free to modify, learn from, and build upon it.
 
 🤝 Contributing
+
 Contributions, issues, and feature requests are welcome!
 Open a pull request or start a discussion in the Issues tab.
