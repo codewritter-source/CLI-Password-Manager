@@ -1,9 +1,22 @@
-import os
 
-from storage import get_entry, add_entry, add_generated_entry, delete_entry
-from generator import generate
-from master_password import verify_master, generate_master, create_master
-import sys
+
+
+from master_password import *
+from storage import *
+from generator import *
+import os, sys
+
+
+
+def main():
+    if os.path.exists("master.txt"):
+        confirmed = verify_master()
+        if confirmed:
+            main_menu()
+        else:
+            close_program()
+    else:
+        main_menu()
 
 
 def close_program():
@@ -11,7 +24,7 @@ def close_program():
     if decision.strip().lower() == "y":
         sys.exit()
 
-def menu():
+def main_menu():
     #   Menu is getting out of hand. Options: dictionary menu.
     print(
         """"
@@ -28,10 +41,9 @@ Main Menu: \n
     if option == 1:
         print(
             """
-ADD AN ENTRY:
+CREATE MASTER PASSWORD:
     1. Generate a password for the entry
     2. Assign a password for the entry
-    3. Return
 
             """
         )
@@ -41,15 +53,13 @@ ADD AN ENTRY:
             add_generated_entry(generate())
         elif entry_option == 2:
             add_entry()
-        elif entry_option == 3:
-            main()
 
     elif option == 2:
         get_entry()
     elif option == 3:
         delete_entry()
     elif option == 4:
-        if os.path.exists("master.csv"):
+        if os.path.exists("master.txt"):
             print("Sorry,master password already exists.")
         else:
             print(
@@ -57,26 +67,22 @@ ADD AN ENTRY:
 Create a Master Password:
     1. Generate a master password
     2. Manually create a master password
-    3. Return
+    3. Exit
                 """
             )
-        if option == 1:
+        master_option = int(input("Choose an option: "))
+        if master_option == 1:
             generate_master()
-        elif option == 2:
+        elif master_option == 2:
             create_master()
-        elif option == 3:
-            menu()
+        elif master_option == 3:
+            close_program()
 
     elif option == 5:
         close_program()
     else:
         print("Invalid option.")
 
-def main():
-    if os.path.exists("master.csv"):
-        verify_master()
-    else:
-        menu()
 
 if __name__ == "__main__":
     main()
