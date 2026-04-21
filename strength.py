@@ -16,7 +16,7 @@ def strength_calculator():
 
 #--------------------------------------------------------------------
 
-    # length
+    # Length Checkpoint
     if length > 16:
         strength += 2
 
