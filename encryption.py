@@ -1,6 +1,8 @@
 
 
 
+# Object oriented encryption module, meat to be interchangeable by other types of encryption.
+
 def encrypt(plain_text, key):
     encrypted_text = ""
     for char in plain_text:                 # Use key to encrypt text.
@@ -21,10 +23,10 @@ def decrypt(encrypted_text, key):
     reverse_key = {value:key for key,value in key.items()}      # Reverse the key for decryption
 
     decrypted_text = ""
-    for char in encrypted_text:
+    for char in encrypted_text:             # Use inverse key to decrypt text.
         if char in reverse_key:
             decrypted_text += reverse_key[char]
-        else:
+        else:                               # If character is not in key, add the same character.
             print(
                 f"""
 WARNING: UPDATE KEY
