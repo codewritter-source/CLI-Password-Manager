@@ -3,23 +3,25 @@
 
 from encryption import encrypt, decrypt
 from key import key
-from main import main_menu
+from tkinter_main import *
+from tkinter import simpledialog, messagebox
 
 import csv
 
 
 def add_entry ():
-    # Receive entry
-    account = input("Enter service provider: ")
-    username = input("Enter your username: ")
-    password = input("Enter your password: ")
+#   Receive entry
+    account = simpledialog.askstring("Add an Entry: ", "Enter service provider: ")
+    username = simpledialog.askstring("Add an Entry", "Enter your username: ")
+    password = simpledialog.askstring("Add an Entry", "Enter your password: ")
 
     # Encrypt data
     encrypted_username = encrypt(username, key)
     encrypted_password = encrypt(password, key)
 
     save(account, encrypted_username, encrypted_password)
-    print("The entry has been saved successfully.")
+    messagebox.showinfo("Success!", "You have successfully added an entry.")
+
     main_menu()
 
 def add_generated_entry (password):

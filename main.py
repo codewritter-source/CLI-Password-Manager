@@ -41,7 +41,7 @@ Main Menu: \n
     if option == 1:
         print(
             """
-CREATE MASTER PASSWORD:
+Create entry:
     1. Generate a password for the entry
     2. Assign a password for the entry
 

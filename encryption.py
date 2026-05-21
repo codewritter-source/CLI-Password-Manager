@@ -1,10 +1,11 @@
 
 
 
-# Object oriented encryption module, meat to be interchangeable by other types of encryption.
+# Object oriented cipher encryption module, meat to be interchangeable by other types of encryption.
 
 def encrypt(plain_text, key):
     encrypted_text = ""
+
     for char in plain_text:                 # Use key to encrypt text.
         if char in key:
             encrypted_text += key[char]
@@ -17,12 +18,19 @@ but the rest will be encrypted and the entry will be saved.
                 """
                 )
             encrypted_text += char
+
     return encrypted_text
+
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+
+
 
 def decrypt(encrypted_text, key):
     reverse_key = {value:key for key,value in key.items()}      # Reverse the key for decryption
-
     decrypted_text = ""
+
     for char in encrypted_text:             # Use inverse key to decrypt text.
         if char in reverse_key:
             decrypted_text += reverse_key[char]
@@ -35,6 +43,7 @@ it is the original character.
                 """
                 )
             decrypted_text += char
+
     return decrypted_text
 
 
