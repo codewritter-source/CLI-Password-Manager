@@ -3,26 +3,23 @@
 
 from encryption import encrypt, decrypt
 from key import key
-from tkinter_main import *
-from tkinter import simpledialog, messagebox
+
 
 import csv
 
 
 def add_entry ():
 #   Receive entry
-    account = simpledialog.askstring("Add an Entry: ", "Enter service provider: ")
-    username = simpledialog.askstring("Add an Entry", "Enter your username: ")
-    password = simpledialog.askstring("Add an Entry", "Enter your password: ")
-
+    account = input("Enter service provider: ")
+    username = input("Enter your username: ")
+    password = input("Enter your password: ")
     # Encrypt data
     encrypted_username = encrypt(username, key)
     encrypted_password = encrypt(password, key)
 
     save(account, encrypted_username, encrypted_password)
-    messagebox.showinfo("Success!", "You have successfully added an entry.")
+    print("Password has been created. The entry has been saved successfully.")
 
-    main_menu()
 
 def add_generated_entry (password):
     account = input("Enter service provider: ")
@@ -37,7 +34,7 @@ def add_generated_entry (password):
     save(account, encrypted_username, encrypted_password)
 
     print("Password has been created. The entry has been saved successfully.")
-    main_menu()
+
 
 def get_entry ():
     search = input("Enter a tag to search database: ")
@@ -65,7 +62,7 @@ Found an entry for: {account}
 
     if not found:
         print('No entry found with this tag. \n')
-        main_menu()
+
 
 def save (account, encrypted_username, encrypted_password):
     # Saved data.
@@ -88,7 +85,7 @@ WARNING: Removing an entry will permanently delete it from the database. This ac
     text = input("Write the message here: ")
     if text != message:
         print("The message you entered is not correct.")
-        main_menu()
+
 
     with open('password.csv', 'r', newline = "") as file:
         rows = list(csv.reader(file))

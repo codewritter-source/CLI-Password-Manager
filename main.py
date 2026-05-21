@@ -1,9 +1,9 @@
 
 
 
-from master_password import *
-from storage import *
-from generator import *
+from master_password import generate_master, verify_master, create_master
+from storage import add_generated_entry, delete_entry, add_entry, get_entry
+from generator import generate
 import os, sys
 
 

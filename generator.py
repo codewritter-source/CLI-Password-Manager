@@ -7,7 +7,7 @@
 
 import string as text
 import random
-from tkinter import messagebox, simpledialog
+
 
 def generate():
 #   text = string module
@@ -18,37 +18,12 @@ def generate():
 
     chars = letter_upper + letter_lower + number + symbol
     string = ''
-    sentinel = True
 
-    while sentinel:
-        length = 0
-        length_factor = simpledialog.askinteger("Generate Password",
-                                                "Enter the length of the password: ")
+    length = int(input("Enter the length of the password: "))
 
-#       Generate string
-        if length > 12:
-            length += length_factor
-
-            for char in range(0, length):
-                string += random.choice(chars)
-                confirmation = messagebox.askretrycancel("Generate Password",
-                                                        f"Your password is: {string} \n Do you wish to generate a different one?")
-                if confirmation == True:
-                    sentinel = True
-                elif confirmation == False:
-                    return string
-
-
-
-
-
-
-
-
-
-
-    else:
-        messagebox.showerror("Error", "Password length must be greater than 12")
-
-
+    if length > 12:
+        for char in range(0, length):
+            string += random.choice(chars)
+    elif length < 12:
+        raise ValueError("Password length must be greater than 12")
 
